@@ -8,13 +8,13 @@ local bins = Config.bins
 
 -- everything is disabled?
 if not Config.storage and not Config.canHide then
-	exports["hl-target"]:RemoveTargetModel(dumpsters)
-	exports["hl-target"]:RemoveTargetModel(bins)
+	exports["qb-target"]:RemoveTargetModel(dumpsters)
+	exports["qb-target"]:RemoveTargetModel(bins)
 	return
 end
 
-local HLCore = exports["hl-core"]:GetCoreObject()
-local LoadAnimDict = HLCore.Functions.RequestAnimDict
+local QBCore = exports["qb-core"]:GetCoreObject()
+local LoadAnimDict = QBCore.Functions.RequestAnimDict
 local canInteract, playerPed
 
 -------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ end
 -- Hide in trash
 
 if Config.canHide then
-	local DrawText3D = HLCore.Functions.DrawText3D
+	local DrawText3D = QBCore.Functions.DrawText3D
 	local canHide, inTrash = true, false
 	local hideSpot = nil
 
@@ -215,7 +215,7 @@ CreateThread(function()
 	-- storage enabled?
 	if Config.storage then
 		-- trash bins
-		exports["hl-target"]:AddTargetModel(bins, {
+		exports["qb-target"]:AddTargetModel(bins, {
 			options = {{
 				type = "client",
 				event = "dumpster:open",
@@ -237,7 +237,7 @@ CreateThread(function()
 			canInteract = canInteract
 		}}
 	else
-		exports["hl-target"]:RemoveTargetModel(bins)
+		exports["qb-target"]:RemoveTargetModel(bins)
 	end
 
 	-- hiding enabled?
@@ -254,11 +254,11 @@ CreateThread(function()
 
 	-- add to dumpster?
 	if targetOptions then
-		exports["hl-target"]:AddTargetModel(dumpsters, {
+		exports["qb-target"]:AddTargetModel(dumpsters, {
 			options = targetOptions,
 			distance = 1
 		})
 	else
-		exports["hl-target"]:RemoveTargetModel(dumpsters)
+		exports["qb-target"]:RemoveTargetModel(dumpsters)
 	end
 end)
