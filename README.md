@@ -9,10 +9,12 @@ add dumpster.lua to qb-smallresources/cliant
 add to qb-smallresources/config.lua
 ----------------------------------------
 ---- // dumpsters
-Config.Dumpster = {
+
+Config.Dumpster ={
+
 	canHide = false, -- enable/disable hiding in dumpsters
 	storage = false, -- eanble/disable dumpster storage
-
+ 
 	-- storage weight and slots
 	-- note: bins use half
 	weight = 100000,
